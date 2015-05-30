@@ -1,0 +1,244 @@
+<?php
+
+class AdController extends \BaseController {
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		return View::make('ads.index')
+			->with('ads', Ad::all());
+	}
+
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		// Limpa a variável de sessão que armazena as urls de imagens
+		Session::forget('createAd.images');
+
+		$breeds = Breed::all()->lists('name', 'id');		
+
+		$types = Tools::withempty(Dog::$type);
+
+		return View::make('ads.create')
+			->with('breeds', $breeds)
+			->with('types', $types);
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
+		$validator = Validator::make(Input::all(), Ad::$rules, Ad::$messages);
+
+		if($validator->fails())	{
+			return Redirect::to(Ad::$restRoute . '/create')
+				->withErrors($validator)
+        ->withInput(Input::all());
+    } else {
+      $ad 		   		= new Ad;
+      $ad->title    = Input::get('title');
+      $ad->breed_id = Input::get('breed_id');
+			$ad->type 			= Input::get('type');
+
+			if($birth_date = Input::get('birth_date', null))
+        $birth_date = Carbon::createFromFormat('d/m/Y', $birth_date)->toDateString();
+      $ad->birth_date 	= $birth_date;
+
+      $ad->description 	= Input::get('description');
+      $ad->price			  = Input::get('price', null);
+      $ad->active 		  = Input::get('active');
+
+      $ad->save();
+
+      // Url das imagens dos caes que já foram salvas
+      if($imagens = Session::pull('createAd.images', null)) {
+      	foreach ($imagens as $value) {
+      		$adImage 		= new AdImage;
+      		$adImage->url 	= $value;
+      		$adImage->ad_id = $ad->id;
+
+      		$adImage->save();
+      	}
+      }
+
+      // redirect
+      Session::flash('message', 'Anúncio cadastrado com sucesso!');
+      return Redirect::to(Ad::$restRoute);
+    }
+	}
+
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		$ad = Ad::find($id);
+
+		return View::make('ads.show')
+			->with('ad', $ad);
+	}
+
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+		$ad     = Ad::find($id);
+		$breeds = Breed::all()->lists('name', 'id');
+		$types = Tools::withempty(Dog::$type);
+
+		return View::make('ads.edit')
+			->with('ad', $ad)
+			->with('breeds', $breeds)
+			->with('types', $types);
+	}
+
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		$validator = Validator::make(Input::all(), Ad::$rules, Ad::$messages);
+
+		if($validator->fails())	{
+			return Redirect::to(Ad::$restRoute . '/' . $id . '/edit')
+				->withErrors($validator)
+                ->withInput(Input::all());
+        } else {
+          $ad 		   		= Ad::find($id);
+          $ad->title   	= Input::get('title');
+          $ad->breed_id = Input::get('breed_id');
+          $ad->type 		= Input::get('type');
+		
+					if($birth_date = Input::get('birth_date', null))
+          	$birth_date = Carbon::createFromFormat('d/m/Y', $birth_date)->toDateString();
+          $ad->birth_date 	= $birth_date;
+
+          $ad->description = Input::get('description');
+          $ad->price 	  = Input::get('price', null);
+          // $ad->url 			= Input::get('url', null);
+          $ad->active   = Input::get('active');
+
+          $ad->save();
+
+          // redirect
+          Session::flash('message', 'Anúncio editado com sucesso!');
+          return Redirect::to(Ad::$restRoute);
+        }
+	}
+
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
+
+
+	public function post_upload(){
+
+		$input = Input::all();
+		$rules = array(
+		    'file' => 'image|max:5000',
+		);
+
+		$validation = Validator::make($input, $rules);
+
+		if ($validation->fails()) {
+			return Response::make($validation->errors->first(), 400);
+		}
+
+		$file 				   = Input::file('file');
+		$extension 			 = $file->getClientOriginalExtension(); 
+		$destinationPath = 'uploads/ads/';
+		$filename 			 = 'ad_image_' . sha1(time().time().$file->getClientOriginalName()).".$extension";
+
+		// If the uploads fail due to file system, you can try doing public_path().'/uploads' 
+		//$filename = $file->getClientOriginalName();
+		$upload_success = Input::file('file')->move($destinationPath, $filename);
+
+		Image::make(sprintf('uploads/ads/%s', $filename))
+			->heighten(720, function ($constraint) {
+			    $constraint->upsize();
+			})
+			->save();
+
+		Image::make(sprintf('uploads/ads/%s', $filename))
+			->heighten(240)
+			->save(sprintf('uploads/ads/thumb_%s', $filename));
+
+		
+	 	if($ad_id = Input::get('id', null)) {
+	   		// Grava nova imagem no banco
+  			$adImage 				= new AdImage;
+    		$adImage->url 	= $filename;
+    		$adImage->ad_id = $ad_id;
+
+    		$adImage->save();
+		} else {
+			// Adiciona path da imagem à session
+			Session::push('createAd.images', $filename);
+		}
+		
+
+        if( $upload_success ) {
+        	return Response::json(['img' => $filename], 200);
+        } else {
+        	return Response::json('error', 400);
+        }
+	}
+
+	public function ajax_delete_image(){
+		$adImage = AdImage::find(Input::get('id'));
+
+		// Remove image files from server
+		unlink(sprintf('uploads/ads/%s', $adImage->url));
+		unlink(sprintf('uploads/ads/thumb_%s', $adImage->url));
+
+		// Remove image from database
+		$adImage->delete();
+
+		return Response::json(['status' => 'success']);
+	}
+
+  public static function getRandomAdImage(Ad $ad){
+    foreach($ad->adImages as $adImage) {
+      return $adImage->url;
+    }
+    return 'sem-foto.jpg';
+  }
+
+  public function getBreedName(Ad $ad){
+    return $ad->breed->name;
+  }
+
+}

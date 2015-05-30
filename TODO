@@ -1,0 +1,53 @@
+
+// PADRÃO CBKC SPITZ ALEMÃO - DOWNLOAD NA PÁGINA DA RAÇA - CADASTRO NA RAÇA
+// http://www.cbkc.com.br/padroes/pdf/grupo5/spitzalemao.pdf
+// http://www.cbkc.com.br/padroes/pdf/grupo9/shihtzu.pdf
+// http://www.cbkc.com.br/padroes/pdf/grupo9/maltes.pdf
+// http://www.fci.be/en/Nomenclature/
+
+
+
+BOOTSTRAP FLUID GRID PARA IMAGENS
+http://salvattore.com/
+http://masonry.desandro.com/
+
+
+
+ABRIR IMAGENS EM JQUERY.UI-DIALOG FORMATO GRANDE
+
+
+ADICIONAR MARCA D'AGUA AUTOMATICAMENTE - INTERVENTION
+
+##########################################################
+###     HOME                                           ###
+##########################################################
+- FILHOTES DISPONÍVEIS
+- MATRIZES
+- PADREADORES
+
+
+##########################################################
+###			NOSSO CANIL																		 ###
+##########################################################
+- Sidebar com últimos anúncios.
+	
+
+##########################################################
+###     CRUD ANÚNCIO                                   ###
+##########################################################
+- título
+- raça
+- descrição
+- preço
+- fotos
+
+
+
+CONFIRMAR ENDEREÇO DE EMAIL
+SIDEBAR EM PÁGINAS ESTÁTICAS COM
+  - parceiros
+  - destaque anuncios
+  - pagseguro
+ADICIONAR BREADCRUMBS
+LINK PÁGINA DE RAÇAS
+EDITAR IMAGEM RAÇA

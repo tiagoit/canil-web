@@ -1,0 +1,109 @@
+@extends('layouts.default') 
+
+@section('slider')
+	@include('includes.slider')
+@stop
+
+@section('content')
+<style type="text/css">
+	.grid-item { width: 25%; }
+	.grid-item--width2 { width: 50%; }
+</style>
+<div class="container">
+	<h2 class="head title-center">Filhotes disponíneis</h2>
+
+	<div class="button-group filter-button-group">
+	  <button class="btn btn-info" data-filter="*">Mostrar todos</button>
+	  <button class="btn btn-primary" data-filter=".maltes">Maltês</button>
+	  <button class="btn btn-warning" data-filter=".shih-tzu">Shih-Tzu</button>
+	  <button class="btn btn-danger" data-filter=".spitz-alemao">Spitz Alemão</button>
+	</div><br>
+
+	<div class="grid">
+	  <!-- <div class="grid-item spitz-alemao"><img src="http://placehold.it/300x150"></div> -->
+    @foreach($ads as $ad)
+    	<div class="grid-item {{ $ad->breed->url }} thumbnail">
+    		<img src="/uploads/ads/thumb_{{AdController::getRandomAdImage($ad)}}" 
+    			alt="anúncio {{$ad->title}}">
+    	</div>
+		@endforeach
+	</div>
+
+</div>
+
+
+
+	<div class="">
+		<div class="">
+			<div class="inner_content clearfix">
+				<div class="product_image">
+					<img src="images/divulgacao/poodle.jpg" alt="" />
+				</div>
+				<div class="sale-box">
+					<span class="on_sale title_shop">Dog teste</span>
+				</div>
+				<div class="price">
+					<div class="cart-left">
+						<p class="title">Poodle</p>
+						<div class="price1">
+							<span class="actual">R$00.00</span>
+						</div>
+					</div>
+					<div class="cart-right"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+			
+	<div class="rsidebar span_1_of_left">
+		<div class="top-border"></div>
+		<div class="border">
+			<link href="css/default.css" rel="stylesheet" type="text/css"
+				media="all" />
+			<link href="css/nivo-slider.css" rel="stylesheet" type="text/css"
+				media="all" />
+			<script src="js/jquery.nivo.slider.js"></script>
+			<script type="text/javascript">
+				$(window).load(function() {
+					$('#slider').nivoSlider();
+				});
+			</script>
+			<div class="slider-wrapper theme-default">
+				<div id="slider" class="nivoSlider">
+					<img src="images/divulgacao/pitbull1.jpg" alt="" /> <img
+						src="images/divulgacao/rottweiler1.jpg" alt="" /> <img
+						src="images/divulgacao/pastorbranco1.jpg" alt="" />
+				</div>
+			</div>
+			<div class="btn">
+				<a href="#">Confira</a>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+@stop
+
+@section('scripts')
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.0/isotope.pkgd.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var grid = $('.grid').isotope({
+	  // options
+	  itemSelector: '.grid-item',
+	  layoutMode: 'fitRows'
+	});
+	// filter items on button click
+	$('.filter-button-group').on( 'click', 'button', function() {
+		console.log('ok');
+	  var filterValue = $(this).attr('data-filter');
+	  grid.isotope({ filter: filterValue });
+	});
+});	
+</script>
+
+@stop
+
+

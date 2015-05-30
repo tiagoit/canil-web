@@ -1,0 +1,267 @@
+@extends('layouts.default') 
+
+@section('slider')
+	@include('includes.slider')
+@stop
+
+@section('content')
+<div class="section group">
+	<div class="cont span_2_of_3">
+		<h2 class="head title-center">Filhotes disponíneis</h2>
+
+		<div class="top-box">	      
+	      <div class="container-fluid">
+					<div class="row-fluid">
+				    @foreach($ads as $ad)
+				    	{{-- $ad->breed_id --}} 
+				    	{{ $ad->breed() }} 
+							<div class="col-xs-6 col-md-3">
+								<a href="#" class="thumbnail">
+									<img src="/uploads/ads/thumb_" alt="anúncio {{$ad->title}}">
+								</a>
+							</div>
+						@endforeach
+					</div>
+				</div>
+
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/poodle.jpg" alt="" />
+						</div>
+						<div class="sale-box">
+							<span class="on_sale title_shop">Filhote</span>
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">Poodle</p>
+								<div class="price1">
+									<span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/pastorbranco.jpg" alt="" />
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">Pastor Alemão Branco</p>
+								<div class="price1">
+									<span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/golden.jpg" alt="" />
+						</div>
+						<div class="sale-box1">
+							<span class="on_sale title_shop">Pedigree</span>
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">golden retriever</p>
+								<div class="price1">
+									<span class="reducedfrom">R$00.00</span> <span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+
+
+
+		<div class="top-box">
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/fila.jpg" alt="" />
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">Fila</p>
+								<div class="price1">
+									<span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/rottweiler.jpg" alt="" />
+						</div>
+						<div class="sale-box">
+							<span class="on_sale title_shop">2 meses</span>
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">Rottweiler</p>
+								<div class="price1">
+									<span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/yorkshire.jpg" alt="" />
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">Yorkshire</p>
+								<div class="price1">
+									<span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+
+
+
+
+		<div class="section group">
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/labrador.jpg" alt="" />
+						</div>
+						<div class="sale-box1">
+							<span class="on_sale title_shop">Pedigree</span>
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">Labrador</p>
+								<div class="price1">
+									<span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/chihuahua.jpg" alt="" />
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">Chihuahua Branco</p>
+								<div class="price1">
+									<span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+				<a href="#">
+					<div class="inner_content clearfix">
+						<div class="product_image">
+							<img src="images/divulgacao/pitbull.jpg" alt="" />
+						</div>
+						<div class="price">
+							<div class="cart-left">
+								<p class="title">Pitbull</p>
+								<div class="price1">
+									<span class="actual">R$00.00</span>
+								</div>
+							</div>
+							<div class="cart-right"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="rsidebar span_1_of_left">
+		<div class="top-border"></div>
+		<div class="border">
+			<link href="css/default.css" rel="stylesheet" type="text/css"
+				media="all" />
+			<link href="css/nivo-slider.css" rel="stylesheet" type="text/css"
+				media="all" />
+			<script src="js/jquery.nivo.slider.js"></script>
+			<script type="text/javascript">
+				$(window).load(function() {
+					$('#slider').nivoSlider();
+				});
+			</script>
+			<div class="slider-wrapper theme-default">
+				<div id="slider" class="nivoSlider">
+					<img src="images/divulgacao/pitbull1.jpg" alt="" /> <img
+						src="images/divulgacao/rottweiler1.jpg" alt="" /> <img
+						src="images/divulgacao/pastorbranco1.jpg" alt="" />
+				</div>
+			</div>
+			<div class="btn">
+				<a href="#">Confira</a>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+@stop
+
+@section('scipts')
+
+@stop
+
+
