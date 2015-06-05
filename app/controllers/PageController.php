@@ -3,8 +3,10 @@ class PageController extends \BaseController {
 	
 	public function inicio() {
 		$ads = Ad::all();
+		$breeds = Breed::all();
 		return View::make('pages.inicio')
-			->with("ads", $ads);
+			->with("ads", $ads)
+			->with("breeds", $breeds);
 	}
 	public function canil() {
 		return View::make('pages.canil');

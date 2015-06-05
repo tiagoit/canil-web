@@ -1,0 +1,44 @@
+Canil Asas de Águia:
+
+Technical:
+  ☐ git pull no justHost @critical
+  ☐ configurar framework para o justHost @critical
+
+Front end:
+  Geral:
+    ☐ Tirar fundo da logo @high
+    ☐ Anúncios com destaque no sidebar @high
+    ☐ Links de redes sociais: fb - twitter - google plus - instagran @high
+
+  Página Incial:
+    ☐ Fotos no banner principal @high
+    ☐ Nossas matrizes @low
+    ☐ Nossos padreadores @low
+    
+  Raças:
+    ☐ Clique para abrir página da raça @high
+
+  Página da raça:
+    ☐ imagem da raça @high
+    ☐ confirmar fotos de matrizes e padreadores @high
+    ☐ abrir página dos cães ao clicar no link @high
+
+  Página do cachorro:
+
+  Nosso Canil:
+
+  Contato:
+
+Back end:
+  Tela principal administração do sistema:
+    ☐ Remover navbar
+    ☐ Bem vindo usuário
+
+  Administração de raças:
+    ☐ 
+
+  Administração de cães:
+    ☐ 
+
+  Administração de anúncios:
+    ☐ 

@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('hp-dv6', 'rafaelsad', 'tiFerreira-PC', 'tiferreira-dv6'),
+	'local' => array('hp-dv6', 'rafaelsad', 'tiFerreira-PC', 'tiferreira-dv6', 'just117.justhost.com'),
 
 ));
 

@@ -12,15 +12,18 @@
 			width: 30%;
 		}
 	</style>
-	<div class="container">
+	<div class="container">	
 		<div class="row">
 			<div class="col-md-9">
 				<br>
 				<div class="button-group filter-button-group">
-				  <button class="btn btn-info" data-filter="*">Mostrar todos</button>
-				  <button class="btn btn-primary" data-filter=".maltes">Maltês</button>
+				  <button class="btn btn-primary" data-filter="*">Mostrar todos</button>
+				  @foreach ($breeds as $breed)
+				  	<button class="btn btn-info" data-filter=".{{$breed->url}}">{{$breed->name}}</button>	
+				  @endforeach
+				  {{-- <button class="btn btn-primary" data-filter=".maltes">Maltês</button>
 				  <button class="btn btn-warning" data-filter=".shih-tzu">Shih-Tzu</button>
-				  <button class="btn btn-danger" data-filter=".spitz-alemao">Spitz Alemão</button>
+				  <button class="btn btn-danger" data-filter=".spitz-alemao">Spitz Alemão</button> --}}
 				</div>
 				<br>
 				<div class="grid">
@@ -44,9 +47,10 @@
 				@endforeach
 				</div>
 			</div>
-
-
-			<!-- <div class="col-md-3 sidebar-canil">
+	
+	
+			<div class="col-md-3 sidebar-canil">
+			
 				<div class="top-border"></div>
 				<div class="border">
 					<div class="slider-wrapper theme-default">
@@ -60,7 +64,8 @@
 						<a href="#">Confira</a>
 					</div>
 				</div>
-			</div> -->
+
+			</div>
 		</div>
 	</div>
 
@@ -80,7 +85,6 @@
 		});
 		// filter items on button click
 		$('.filter-button-group').on( 'click', 'button', function() {
-			console.log('ok');
 		  var filterValue = $(this).attr('data-filter');
 		  grid.isotope({ filter: filterValue });
 		});

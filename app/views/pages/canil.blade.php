@@ -10,8 +10,8 @@
       </ul>
       
       <h1 class="text-left">Canil Asas de Águia <br><small>Filhotes de qualidade</small></h1>
-      <br><br><br>
-      
+      <br>
+
       <div class="row">
         <div class="col-md-7">
         <h2>Quem somos</h2>
@@ -33,22 +33,22 @@
         </div>
         <div class="col-md-5">
           <br><br><br>
-          <a href="#" class="thumbnail inner-border text-center">
+          <div class="thumbnail inner-border text-center">
             <img src="/images/estaticas/chloe.jpg">
-            <span>Segurança e qualidade</span>
-          </a>
+            <!-- <span>Segurança e qualidade</span> -->
+          </div>
         </div>
       </div>
-      <hr><br><br>
+      <hr>
 
 
       <div class="row">
 
         <div class="col-md-5"><br>
-          <a href="#" class="thumbnail inner-border text-center">
+          <div href="#" class="thumbnail inner-border text-center">
             <img src="/images/estaticas/bela.jpg">
-            <span>Profissionais comprometidos</span>
-          </a>
+            <!-- <span>Profissionais comprometidos</span> -->
+          </div>
         </div>
         <div class="col-md-7">
           <h2>Valores</h2>
@@ -59,7 +59,7 @@
           </p>
         </div>
       </div>
-      <hr><br><br>
+      <hr>
 
 
       <div class="row">
@@ -79,13 +79,13 @@
           </p>
         </div>
         <div class="col-md-5"><br>
-          <a href="#" class="thumbnail inner-border text-center">
+          <div class="thumbnail inner-border text-center">
             <img src="/images/estaticas/sisi.jpg">  
-            <span>Tratamento cinco estrelas</span>
-          </a>
+            <!-- <span>Tratamento cinco estrelas</span> -->
+          </div>
         </div>
       </div>
-      <br><br>
+      
 
       <!-- FORMULÁRIO DE CONTATO -->
       <!-- <div class="content-top">

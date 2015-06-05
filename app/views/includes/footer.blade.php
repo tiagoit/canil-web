@@ -118,7 +118,7 @@
 		<div class="footer-bottom">
 			<div class="wrap">
 				<div class="copy">
-					<p><!-- © -->&copy; 2014 Canil Asas de Águia</p>
+					<p><!-- © -->&copy; 2015 Canil Asas de Águia</p>
 				</div>
 				<div class="f-list2">
 					<ul>
